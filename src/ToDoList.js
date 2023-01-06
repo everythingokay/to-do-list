@@ -5,21 +5,28 @@ import NewForm from "./NewForm";
 class ToDoList extends Component {
     constructor(props) {
         super(props);
-        this.state = { todos: [{task: "laundry"}, {task: "dishes"}] };
+        this.state = { todos: [] };
         this.create = this.create.bind(this);
+        this.remove = this.remove.bind(this);
     };
     create(newToDo) {
         this.setState({
             todos: [...this.state.todos, newToDo]
         });
     };
-    // remove() {
-
-    // };
+    remove(id) {
+        this.setState({
+            todos: this.state.todos.filter(todo => todo.id !== id)
+        });
+    };
 
     render() {
         const todos = this.state.todos.map(todo => {
-            return <ToDo task={todo.task} />
+            return <ToDo 
+            key={todo.id} 
+            id={todo.id} 
+            task={todo.task} 
+            remove={this.remove} />
         });
         return (
             <div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 class NewForm extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class NewForm extends Component {
     };
     handleSubmit(evt) {
         evt.preventDefault();
-        this.props.createTask(this.state);
+        this.props.createTask({ ...this.state, id: uuidv4() });
         this.setState({ task: "" });
     };
 
@@ -28,8 +29,7 @@ class NewForm extends Component {
                     name="task" 
                     id="task" 
                     value={this.state.task}
-                    onChange={this.handleChange}
-                />
+                    onChange={this.handleChange} />
                 <button>Add</button>
             </form>
         );
