@@ -5,10 +5,12 @@ class ToDo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEditing: false
+            isEditing: false,
+            task: ""
         };
         this.handleRemove = this.handleRemove.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
     };
     handleRemove() {
         this.props.remove(this.props.id)
@@ -16,14 +18,21 @@ class ToDo extends Component {
     toggleForm() {
         this.setState({ isEditing: !this.state.isEditing })
     };
+    handleUpdate(evt) {
+        evt.preventDefault();
+    };
 
     render() {
         let result;
         if (this.state.isEditing) {
             result = (
                 <div>
-                    <form>
-                        <input type="text"></input>
+                    <form onSubmit={this.handleUpdate}>
+                        <input 
+                        type="text" 
+                        value={this.state.task} 
+                        name="task" 
+                        onChange={this.handleChange} />
                         <button>Save</button>
                     </form>
                 </div>
