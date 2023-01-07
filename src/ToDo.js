@@ -1,4 +1,3 @@
-import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
 import React, { Component } from "react";
 
 class ToDo extends Component {
@@ -6,11 +5,12 @@ class ToDo extends Component {
         super(props);
         this.state = {
             isEditing: false,
-            task: ""
+            task: this.props.task
         };
         this.handleRemove = this.handleRemove.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     };
     handleRemove() {
         this.props.remove(this.props.id)
@@ -20,6 +20,13 @@ class ToDo extends Component {
     };
     handleUpdate(evt) {
         evt.preventDefault();
+        this.props.update(this.props.id, this.state.task);
+        this.setState({ isEditing: false });
+    };
+    handleChange(evt) {
+        this.setState({
+            [evt.target.name]: evt.target.value
+        });
     };
 
     render() {
