@@ -12,6 +12,7 @@ class ToDo extends Component {
         this.toggleForm = this.toggleForm.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleToggle = this.handleToggle.bind(this);
     };
     handleRemove() {
         this.props.remove(this.props.id)
@@ -28,6 +29,9 @@ class ToDo extends Component {
         this.setState({
             [evt.target.name]: evt.target.value
         });
+    };
+    handleToggle(evt) {
+        this.props.toggle(this.props.id);
     };
 
     render() {
@@ -50,7 +54,8 @@ class ToDo extends Component {
             <div>
                 <button onClick={this.toggleForm}>Edit</button>
                 <button onClick={this.handleRemove}>Delete</button>
-                <li className={this.props.completed ? "completed" : ""}>
+                <li className={this.props.completed ? "completed" : ""} 
+                onClick={this.handleToggle}>
                     {this.props.task}
                 </li>
             </div>
