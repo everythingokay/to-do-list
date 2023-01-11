@@ -21,7 +21,7 @@ class ToDoList extends Component {
         });
     };
     update(id, updatedTask) {
-        const updatedTasks = this.state.map.todos(todo => {
+        const updatedTasks = this.state.todos.map(todo => {
             if(todo.id === id) {
                 return {...todo, task: updatedTask}
             }
