@@ -54,7 +54,9 @@ class ToDoList extends Component {
         });
         return (
             <div className="todolist">
-                <h1>To-Do List</h1>
+                <h1>
+                    To-Do List <span>A Simple React App</span>
+                </h1>
                 <ul>{todos}</ul>
                 <NewForm createTask={this.create} />
             </div>

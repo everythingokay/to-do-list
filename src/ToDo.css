@@ -3,7 +3,7 @@
     text-decoration-line: line-through;
 }
 
-.Todo {
+.todo {
     display: flex;
     margin: 0 -3rem 4px;
     padding: 1.1rem 3rem;
@@ -14,21 +14,20 @@
     overflow: hidden;
     position: relative;
     transition: opacity 500ms ease-in-out;
-  }
-  .Todo-task {
+}
+.todo-task {
     position: relative;
     transition: opacity 0.4s linear;
-  }
-  .Todo.completed {
+}
+.todo-task.completed {
     transition: opacity 300ms ease-in-out;
     transition-delay: 200ms;
     opacity: 0.5;
-  }
-  
-  .Todo.completed .Todo-task {
-    /* opacity: 0.6; */
-  }
-  .Todo.completed .Todo-task:before {
+}
+/* .todo.completed .todo-task {
+    opacity: 0.6; 
+}*/
+.todo-task.completed .todo-task:before {
     content: "";
     position: absolute;
     top: 50%;
@@ -37,15 +36,14 @@
     width: 0%;
     height: 4px;
     background: #fff;
-    animation: strikeitem 0.3s ease-in 0s forwards;
-  }
-  
-  @keyframes strikeitem {
+    animation: strikeitem 0.5s ease-out 0s forwards;
+}
+@keyframes strikeitem {
     to {
       width: calc(100% + 1rem);
     }
-  }
-  
+}
+
   .Todo-buttons {
     flex-shrink: 0;
     padding-left: 0.7em;
