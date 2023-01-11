@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./ToDo.css";
 
 class ToDo extends Component {
     constructor(props) {
@@ -49,7 +50,9 @@ class ToDo extends Component {
             <div>
                 <button onClick={this.toggleForm}>Edit</button>
                 <button onClick={this.handleRemove}>Delete</button>
-                <li>{this.props.task}</li>
+                <li className={this.props.completed ? "completed" : ""}>
+                    {this.props.task}
+                </li>
             </div>
             );
         };

@@ -15,7 +15,7 @@ class NewForm extends Component {
     };
     handleSubmit(evt) {
         evt.preventDefault();
-        this.props.createTask({ ...this.state, id: uuidv4() });
+        this.props.createTask({ ...this.state, id: uuidv4(), completed: false });
         this.setState({ task: "" });
     };
 
